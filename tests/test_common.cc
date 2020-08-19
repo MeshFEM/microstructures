@@ -1,0 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////
+
+#define SYMMETRY_NAME(sym, name)                  \
+    template<>                                    \
+    struct SymmetryTraits<sym> {                  \
+        static constexpr char value[] = name;     \
+    };                                            \
+    constexpr char SymmetryTraits<sym>::value [];
+
+////////////////////////////////////////////////////////////////////////////////
+#include "test_common.hh"
+////////////////////////////////////////////////////////////////////////////////

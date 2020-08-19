@@ -1,0 +1,14 @@
+{
+    "domainErrorBound"        : 1e-5,
+    "facetAngle"              : 30.0,
+    "facetSize"               : 0.025,
+    "facetDistance"           : 2e-3,
+    "cellSize"                : 0.15,
+    "edgeSize"                : 0.025,
+    "cellRadiusEdgeRatio"     : 2.0,
+    "marchingSquaresGridSize" : 256,
+    "marchingCubesGridSize"   : 128,
+
+    "maxArea"                 : 0.001,
+    "featureAngleThreshold"   : 0.7853981633974483
+}

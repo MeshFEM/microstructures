@@ -1,0 +1,5 @@
+add_subdirectory(isosurface_inflator)
+add_subdirectory(pattern_optimization)
+add_subdirectory(topology_enumeration)
+add_subdirectory(worst_case_stress)
+add_subdirectory(simple_api)
