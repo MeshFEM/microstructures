@@ -79,8 +79,8 @@ jobs:
       - name: Build
         run: cd build; make -j2; ccache --show-stats
 
-      - name: Tests
-        run: cd build; ctest --verbose
+      # - name: Tests
+      #   run: cd build; ctest --verbose
 
   ####################
   # Windows
@@ -144,5 +144,5 @@ jobs:
             -S .
           cmake --build build
 
-      - name: Tests
-        run: cd build; ctest --verbose
+      # - name: Tests
+      #   run: cd build; ctest --verbose

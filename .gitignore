@@ -1,7 +1,7 @@
 # Extra directories
 .vscode/
 .idea/
-build/
+build*/
 cmake-build-*/
 data
 
