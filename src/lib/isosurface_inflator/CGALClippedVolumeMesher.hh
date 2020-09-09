@@ -26,6 +26,8 @@
 
 #include "SignedDistanceRegion.hh"
 
+#ifdef MICRO_WITH_CGAL
+
 class CGALClippedVolumeMesher : public MesherBase {
 public:
     using Real = typename SignedDistanceRegion<3>::Real;
@@ -40,5 +42,7 @@ public:
 private:
     struct ClippedSignedDistanceFunction;
 };
+
+#endif
 
 #endif /* end of include guard: CGALCLIPPEDVOLUMEMESHER_HH */

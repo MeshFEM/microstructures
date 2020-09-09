@@ -82,7 +82,7 @@ if(NOT TARGET CLI11::CLI11)
 endif()
 
 # CGAL library
-if(NOT TARGET CGAL::CGAL)
+if(MICRO_WITH_CGAL AND NOT TARGET CGAL::CGAL)
     micro_download_cgal()
     set(CGAL_DIR ${MICRO_EXTERNAL}/cgal)
     find_package(CGAL CONFIG REQUIRED COMPONENTS PATHS ${CGAL_DIR} NO_DEFAULT_PATH)
@@ -94,6 +94,18 @@ if(NOT TARGET nanoflann::nanoflann)
     add_library(nanoflann INTERFACE)
     add_library(nanoflann::nanoflann ALIAS nanoflann)
     target_include_directories(nanoflann INTERFACE ${MICRO_EXTERNAL}/nanoflann/include)
+endif()
+
+# Quickhull
+if(NOT TARGET quickhull::quickhull)
+    micro_download_quickhull()
+    file(GLOB QUICKHULL_SOURCES "${MICRO_EXTERNAL}/quickhull/*.cpp")
+    add_library(quickhull ${QUICKHULL_SOURCES})
+    add_library(quickhull::quickhull ALIAS quickhull)
+    target_include_directories(quickhull SYSTEM PUBLIC
+        ${MICRO_EXTERNAL}/quickhull/
+        ${MICRO_EXTERNAL}/quickhull/Structs
+    )
 endif()
 
 # Accelerate framework

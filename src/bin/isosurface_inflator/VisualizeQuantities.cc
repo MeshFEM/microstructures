@@ -24,7 +24,11 @@ int main(int argc, const char *argv[]) {
     PaperVisualizationSDFunc sdfunc(r1, r2, r3, r4, s);
 
     std::unique_ptr<MesherBase> mesher;
+    #ifdef MICRO_WITH_CGAL
     if      (mesherName == "cgal") mesher = Future::make_unique<CGALClippedVolumeMesher>();
+    #else
+    if      (false);
+    #endif
     else if (mesherName ==  "igl") mesher = Future::make_unique<IGLSurfaceMesherMC>();
     else if (mesherName ==  "midplane") mesher = Future::make_unique<MidplaneMesher>();
     else throw std::runtime_error("Unknown mesher; must be cgal, midplane, or igl");

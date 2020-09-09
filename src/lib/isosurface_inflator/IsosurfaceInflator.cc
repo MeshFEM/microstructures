@@ -131,7 +131,9 @@ IsosurfaceInflator::IsosurfaceInflator(const string &type, bool vertexThickness,
     }
 
     // The default mesher for 3D is CGAL.
+    #ifdef MICRO_WITH_CGAL
     if (!mesher) mesher = Future::make_unique<CGALClippedVolumeMesher>();
+    #endif
 
     map<string, function<void()>> makeImplForSymmetry = {
         {"cubic",           [&]() { m_imp = new IsosurfaceInflatorImpl<WireMesh<Symmetry::Cubic<>         >>(wireMeshPath, std::move(mesher), inflationNeighborhoodEdgeDist, blendingPolySize); }},

@@ -94,6 +94,14 @@ function(micro_download_nanoflann)
     )
 endfunction()
 
+## quickhull
+function(micro_download_quickhull)
+    micro_download_project(quickhull
+        GIT_REPOSITORY https://github.com/akuukka/quickhull.git
+        GIT_TAG 4f65e0801b8f60c9a97da2dadbe63c2b46397694
+    )
+endfunction()
+
 ## Sanitizers
 function(micro_download_sanitizers)
     micro_download_project(sanitizers-cmake

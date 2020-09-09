@@ -12,6 +12,7 @@ set(SOURCES
         BoxIntersectionMesher.cc
         BoxIntersectionMesher.hh
         CGALClippedVolumeMesher.hh
+        ConvexHullTriangulation.cc
         ConvexHullTriangulation.hh
         DynamicKdTree.cc
         DynamicKdTree.hh
@@ -65,22 +66,27 @@ set(SOURCES
 micro_add_library(isosurface_inflator ${SOURCES})
 micro_copy_headers(isosurface_inflator ${SOURCES})
 
-micro_add_library(isosurface_inflator_cgal
-        CGALClippedVolumeMesher.cc
-        ConvexHullTriangulation.cc
-)
+if(MICRO_WITH_CGAL)
+    micro_add_library(isosurface_inflator_cgal
+            CGALClippedVolumeMesher.cc
+    )
+endif()
 
 ################################################################################
 # Dependencies
 ################################################################################
 
-target_link_libraries(micro_isosurface_inflator_cgal
-    PUBLIC
-        MeshFEM
-        micro::tbb
-    PRIVATE
-        CGAL::CGAL
-)
+if(MICRO_WITH_CGAL)
+    target_link_libraries(micro_isosurface_inflator_cgal
+        PUBLIC
+            MeshFEM
+            micro::tbb
+        PRIVATE
+            CGAL::CGAL
+    )
+
+    target_compile_definitions(micro_isosurface_inflator PUBLIC MICRO_WITH_CGAL)
+endif()
 
 target_link_libraries(micro_isosurface_inflator
     PUBLIC
@@ -89,8 +95,9 @@ target_link_libraries(micro_isosurface_inflator
         micro::tbb
         nanoflann::nanoflann
     PRIVATE
-        micro::isosurface_inflator_cgal
+        $<TARGET_NAME_IF_EXISTS:micro::isosurface_inflator_cgal>
         micro::vcglib
+        quickhull::quickhull
         warnings::all
 )
 
