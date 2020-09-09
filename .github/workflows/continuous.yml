@@ -3,7 +3,8 @@ name: Build
 on:
   push:
     branches:
-      - *
+      - master
+      - jdumas/actions
   pull_request:
     branches:
       - master
