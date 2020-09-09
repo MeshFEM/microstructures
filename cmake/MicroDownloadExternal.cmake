@@ -117,3 +117,11 @@ function(micro_download_cotire)
         GIT_TAG        391bf6b7609e14f5976bd5247b68d63cbf8d4d12
     )
 endfunction()
+
+## unit test data
+function(micro_download_microstructures_data)
+    micro_download_project(microstructures_data
+        GIT_REPOSITORY https://github.com/MeshFEM/microstructures_data.git
+        GIT_TAG 3cfecadc0264f199f7d0c2e83362898b77174e01
+    )
+endfunction()

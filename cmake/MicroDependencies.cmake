@@ -132,6 +132,15 @@ if(MICRO_WITH_COTIRE)
     micro_download_cotire()
 endif()
 
+# Unit test data
+if(MICRO_TOPLEVEL_PROJECT AND NOT TARGET micro::data)
+    micro_download_microstructures_data()
+    add_library(micro_data INTERFACE)
+    add_library(micro::data ALIAS micro_data)
+    set(DATA_DIR "${MICRO_EXTERNAL}/microstructures_data/")
+    target_compile_definitions(micro_data INTERFACE -DDATA_DIR=\"${DATA_DIR}\")
+endif()
+
 ################################################################################
 # Optional libraries
 ################################################################################
