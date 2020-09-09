@@ -111,7 +111,7 @@ jobs:
       - name: Setup conda
         uses: goanpeca/setup-miniconda@v1
         with:
-          activate-environment: meshfem
+          activate-environment: microstructures
           environment-file: conda.yml
           auto-activate-base: false
 
