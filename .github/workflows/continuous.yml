@@ -40,6 +40,7 @@ jobs:
       - name: Dependencies (Linux)
         if: runner.os == 'Linux'
         run: |
+            sudo apt-get update
             sudo apt-get install \
             libboost-program-options-dev \
             libboost-filesystem-dev \
