@@ -60,6 +60,13 @@ include(CMakeToolsHelpers OPTIONAL)
 # Helper functions
 include(MicroUtils)
 
+# Compiler-specific options
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    add_compile_options(/bigobj)
+else()
+    add_compile_options(-fvisibility=hidden)
+endif()
+
 ################################################################################
 
 # Find out if we are on Ubuntu
