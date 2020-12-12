@@ -1,0 +1,25 @@
+# Extra directories
+.vscode/
+.idea/
+.clangd/
+build*/
+cmake-build-*/
+data
+
+/python/MeshFEM
+
+# Dependencies
+/3rdparty
+
+# LaTeX
+*.bbl
+*.blg
+*.log
+*.out
+*.pdf
+*.aux
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.run.xml
+*-blx.bib

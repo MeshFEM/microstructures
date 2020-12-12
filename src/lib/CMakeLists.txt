@@ -1,0 +1,4 @@
+add_subdirectory(isosurface_inflator)
+add_subdirectory(inflators)
+add_subdirectory(optimizers)
+add_subdirectory(pattern_optimization)
