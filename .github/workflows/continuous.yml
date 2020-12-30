@@ -106,6 +106,9 @@ jobs:
           echo "BOOST_ROOT=$env:BOOST_ROOT_1_72_0" >> ${env:GITHUB_ENV}
           echo "appdata=$env:LOCALAPPDATA" >> ${env:GITHUB_ENV}
 
+      - run: echo %PATH%
+        shell: cmd
+
       - name: Setup conda
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -120,6 +123,9 @@ jobs:
           path: ${{ env.appdata }}\Mozilla\sccache
           key: ${{ runner.os }}-${{ matrix.config }}-cache
 
+      - run: echo %PATH%
+        shell: cmd
+
       - name: Prepare sccache
         run: |
           Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
@@ -128,6 +134,7 @@ jobs:
           echo "${env:PATH}" >> ${env:GITHUB_PATH}
 
       - run: echo %PATH%
+        shell: cmd
 
       - run: echo %PATH%
         shell: cmd /C CALL {0}
