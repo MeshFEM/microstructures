@@ -127,6 +127,12 @@ jobs:
           # Scoop modifies the PATH so we make it available for the next steps of the job
           echo "${env:PATH}" >> ${env:GITHUB_PATH}
 
+      - name: Set VS dev env
+        shell: cmd /C CALL {0}
+        run: |
+          :: Set VS dev environment, see https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 -vcvars_ver=14.2
+
         # We run configure + build in the same step, since they both need to call VsDevCmd
         # Also, cmd uses ^ to break commands into multiple lines (in powershell this is `)
       - name: Configure and build
