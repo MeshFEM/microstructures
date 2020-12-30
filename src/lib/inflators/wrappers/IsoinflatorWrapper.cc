@@ -51,8 +51,8 @@ void IsoinflatorWrapper<N>::m_inflate(const std::vector<Real> &params)
 // Shape velocity computation
 ////////////////////////////////////////////////////////////////////////////////
 template<size_t N>
-std::vector<VectorField<Real, N>>
-IsoinflatorWrapper<N>::volumeShapeVelocities() const
+auto
+IsoinflatorWrapper<N>::volumeShapeVelocities() const -> std::vector<VectorField<Real, N>>
 {
     std::vector<std::vector<Real>> nsv = m_inflator->normalShapeVelocities();
     std::vector<Point3D>             n = m_inflator->vertexNormals();

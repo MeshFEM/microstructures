@@ -73,7 +73,8 @@ jobs:
           cmake .. \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_BUILD_TYPE=${{ matrix.config }} \
-            -DMESHFEM_PREFER_SYSTEM_CERES=OFF
+            -DMESHFEM_PREFER_SYSTEM_CERES=OFF \
+            -DMICRO_COPY_HEADERS=ON
 
       - name: Build
         run: cd build; make -j2; ccache --show-stats
@@ -142,6 +143,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=sccache ^
             -DCMAKE_BUILD_TYPE=${{ matrix.config }} ^
             -DMESHFEM_PREFER_SYSTEM_CERES=OFF ^
+            -DMICRO_COPY_HEADERS=ON ^
             -DCMAKE_JOB_POOLS="pool-linking=1;pool-compilation=2" ^
             -DCMAKE_JOB_POOL_COMPILE:STRING=pool-compilation ^
             -DCMAKE_JOB_POOL_LINK:STRING=pool-linking ^

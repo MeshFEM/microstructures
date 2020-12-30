@@ -123,7 +123,7 @@ public:
                 R(2*i+1) = stripAutoDiff(thicknesses[e.second]);
                 i++;
             }
-            m_aabbTree = micro::AABBTree(V, E, R.array() * 5.0);
+            m_aabbTree = ::micro::AABBTree(V, E, R.array() * 5.0);
         }
 
         m_incidentEdges.resize(points.size());
@@ -1077,7 +1077,7 @@ private:
 
     // Acceleration structure
     bool m_useAbbbTree = false;
-    micro::AABBTree m_aabbTree;
+    ::micro::AABBTree m_aabbTree;
 
     // Joint vertex indices and their geometry
     // (Not every vertex is a joint; there are dangling edges extending outside

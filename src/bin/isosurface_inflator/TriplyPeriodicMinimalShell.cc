@@ -4,6 +4,7 @@
 #include <isosurface_inflator/MidplaneMesher.hh>
 #include <isosurface_inflator/TriplyPeriodicMinimalShell.hh>
 #include <isosurface_inflator/SnapAndReflect.hh>
+
 #include <MeshFEM/filters/remove_dangling_vertices.hh>
 #include <MeshFEM/TetMesh.hh>
 #include <MeshFEM/LinearElasticity.hh>

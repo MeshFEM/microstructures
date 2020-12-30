@@ -3,8 +3,6 @@
 #include "../rref.h"
 #include "../ParameterConstraint.hh"
 
-using namespace std;
-
 template<size_t N>
 EqualityConstrainedInflator<N>::
 EqualityConstrainedInflator(std::unique_ptr<Inflator<N>> infl,
@@ -33,9 +31,10 @@ EqualityConstrainedInflator(std::unique_ptr<Inflator<N>> infl,
 // Translate shape velocities from full to reduced parameters (chain rule)
 // (Effectively apply the transpose of the change of variables matrix.)
 template<size_t N>
-std::vector<VectorField<Real, N>> 
+auto
 EqualityConstrainedInflator<N>::
-volumeShapeVelocities() const {
+volumeShapeVelocities() const -> std::vector<VectorField<Real, N>>
+{
     std::vector<VectorField<Real, N>> fullVelocities = m_infl->volumeShapeVelocities();
 
     const size_t nip = numParameters();
@@ -90,7 +89,7 @@ m_setConstraints(const std::vector<ParameterConstraint> &constraints) {
     // dependent variables in terms of these.
     const size_t fullNumParams = m_infl->numParameters();
     const size_t expectedCols = fullNumParams + 1;
-    vector<vector<Real>> augmentedConstraintSystem;
+    std::vector<std::vector<Real>> augmentedConstraintSystem;
     for (const ParameterConstraint &pc : constraints) {
         if (!pc.isEqualityConstraint()) continue;
         augmentedConstraintSystem.emplace_back(pc.augmentedRow());

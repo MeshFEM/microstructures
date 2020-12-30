@@ -72,6 +72,7 @@ endif()
 if(NOT TARGET MeshFEM)
     micro_download_meshfem()
     option(MESHFEM_WITH_CERES "Compile MeshFEM with Ceres" ${MICRO_WITH_CERES})
+    option(MESHFEM_WITH_TBB "Compile MeshFEM with TBB support" ON)
     add_subdirectory(${MICRO_EXTERNAL}/MeshFEM MeshFEM)
 endif()
 

@@ -4,7 +4,7 @@
 /*! @file
 //  Applies linear parameter equality constraints to an inflator by constructing
 //  a set of reduced variables.
-*/ 
+*/
 //  Author:  Julian Panetta (jpanetta), julian.panetta@gmail.com
 //  Company:  New York University
 //  Created:  05/22/2016 13:53:44
