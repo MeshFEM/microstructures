@@ -121,7 +121,7 @@ endfunction()
 ## unit test data
 function(micro_download_microstructures_data)
     micro_download_project(microstructures_data
-        GIT_REPOSITORY git@github.com:MeshFEM/microstructures_data.git
+        GIT_REPOSITORY https://github.com/MeshFEM/microstructures_data.git
         GIT_TAG 30438a36558b88f79b1335f9f1003e0122a552e0
     )
 endfunction()
