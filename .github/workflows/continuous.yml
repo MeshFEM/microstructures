@@ -131,7 +131,7 @@ jobs:
           Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
           scoop install sccache --global
           # Scoop modifies the PATH so we make it available for the next steps of the job
-          echo "${env:PATH}" >> ${env:GITHUB_PATH}
+          echo "C:\ProgramData\scoop\shims;C:\Users\runneradmin\scoop\shims" >> ${env:GITHUB_PATH}
 
       - run: echo %PATH%
         shell: cmd
