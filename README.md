@@ -1,5 +1,7 @@
 # Microstructures
 
+[![](https://github.com/MeshFEM/microstructures/workflows/Build/badge.svg?event=push)](https://github.com/MeshFEM/microstructures/actions?query=workflow%3ABuild+branch%3Amaster+event%3Apush)
+
 This repository contains a collection of routines for the optimization and analysis of homogenized material properties of graph-based microstructures. Microstructures are described by a graph, with parameters such as vertex positions, vertex radii, and blending factor. They can be inflated into a periodic triangle mesh (2D) or tetrahedral mesh (3D).
 
 ### Coverage Results in 2D
