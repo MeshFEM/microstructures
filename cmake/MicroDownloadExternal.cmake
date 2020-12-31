@@ -27,7 +27,7 @@ endfunction()
 function(micro_download_meshfem)
     micro_download_project(MeshFEM
         GIT_REPOSITORY https://github.com/MeshFEM/MeshFEM.git
-        GIT_TAG        3cc5b5d29d678c5885a1d0e25b55b119d85b5f4c
+        GIT_TAG        c9fa2effae174e2783cf0de32454c6267bd1dee5
     )
 endfunction()
 
@@ -41,7 +41,7 @@ function(micro_download_tbb)
     else()
         micro_download_project(tbb
             GIT_REPOSITORY https://github.com/wjakob/tbb.git
-            GIT_TAG        b066defc0229a1e92d7a200eb3fe0f7e35945d95
+            GIT_TAG        344fa84f34089681732a54f5def93a30a3056ab9
         )
     endif()
 endfunction()
@@ -121,7 +121,7 @@ endfunction()
 ## unit test data
 function(micro_download_microstructures_data)
     micro_download_project(microstructures_data
-        GIT_REPOSITORY git@github.com:MeshFEM/microstructures_data.git
+        GIT_REPOSITORY https://github.com/MeshFEM/microstructures_data.git
         GIT_TAG 30438a36558b88f79b1335f9f1003e0122a552e0
     )
 endfunction()

@@ -45,16 +45,21 @@ if(NOT TARGET tbb::tbb)
     set(TBB_NO_DATE ON CACHE BOOL " " FORCE)
 
     micro_download_tbb()
-    add_subdirectory(${MICRO_EXTERNAL}/tbb tbb EXCLUDE_FROM_ALL)
+    add_subdirectory(${MICRO_EXTERNAL}/tbb tbb)
     set_property(TARGET tbb_static tbb_def_files PROPERTY FOLDER "dependencies")
-    set_target_properties(tbb_static PROPERTIES COMPILE_FLAGS "-Wno-implicit-fallthrough -Wno-missing-field-initializers -Wno-unused-parameter -Wno-keyword-macro")
+    if(NOT MSVC)
+        set_target_properties(tbb_static PROPERTIES COMPILE_FLAGS
+            "-Wno-implicit-fallthrough -Wno-missing-field-initializers -Wno-unused-parameter -Wno-keyword-macro"
+        )
+    endif()
 
     add_library(tbb_tbb INTERFACE)
     target_include_directories(tbb_tbb SYSTEM INTERFACE ${MICRO_EXTERNAL}/tbb/include)
     target_link_libraries(tbb_tbb INTERFACE tbb_static tbbmalloc_static)
     add_library(tbb::tbb ALIAS tbb_tbb)
 
-    micro_target_hide_warnings(tbb_tbb tbb_static tbbmalloc_static)
+    # Doesn't work with Ninja + MSVC on the ASM files
+    # micro_target_hide_warnings(tbb_tbb tbb_static tbbmalloc_static)
 endif()
 
 if(NOT TARGET micro::tbb)
@@ -70,6 +75,7 @@ endif()
 if(NOT TARGET MeshFEM)
     micro_download_meshfem()
     option(MESHFEM_WITH_CERES "Compile MeshFEM with Ceres" ${MICRO_WITH_CERES})
+    option(MESHFEM_WITH_TBB "Compile MeshFEM with TBB support" ON)
     add_subdirectory(${MICRO_EXTERNAL}/MeshFEM MeshFEM)
 endif()
 

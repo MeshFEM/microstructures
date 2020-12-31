@@ -178,8 +178,8 @@ paramsFromBoundaryVField(const VectorField<Real, N> &values) const
 // Get the boundary vector field corresponding to "params" (i.e. the
 // inverse of paramsFromBoundaryVField)
 template<size_t N>
-VectorField<Real, N> BoundaryPerturbationInflator<N>::
-boundaryVFieldFromParams(const ScalarField<Real> &params) const
+auto BoundaryPerturbationInflator<N>::
+boundaryVFieldFromParams(const ScalarField<Real> &params) const -> VectorField<Real, N>
 {
     VectorField<Real, N> result(m_mesh->numBoundaryVertices());
     result.clear();

@@ -8,16 +8,22 @@ See this [coverage plot](http://julianpanetta.com/2d_isosurface_hull_autocover_r
 
 ### Dependencies
 
-The following dependencies are required, and downloaded automatically by CMake (expect boost):
+The following dependencies are required, and must be installed separately:
+
+- CHOLMOD/UMFPACK (SuiteSparse) (installed separately)
+
+The following dependencies are required, and downloaded automatically by CMake:
+
 - [MeshFEM](https://github.com/MeshFEM/MeshFEM)
 - [TBB](https://github.com/wjakob/tbb)
 - [CLI11](https://github.com/wjakob/tbb)
 - [Nanoflann](https://github.com/jlblancoc/nanoflann)
 - [Quickhull](https://github.com/akuukka/quickhull.git)
 - [Catch2](https://github.com/catchorg/Catch2)
-- [Boost](https://www.boost.org/) (installed separately)
+- [Boost](https://www.boost.org/)
 
 The following dependencies are optional:
+
 - [CGAL](https://github.com/CGAL/cgal)
 - [Ceres](https://github.com/ceres-solver/ceres-solver)
 - [Dlib](https://github.com/davisking/dlib)

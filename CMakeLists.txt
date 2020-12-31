@@ -2,7 +2,7 @@
 # General Informations
 ################################################################################
 
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.16)
 project(Microstructures)
 
 # CMP0063: Honor visibility properties for all target types.
@@ -66,6 +66,17 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 else()
     add_compile_options(-fvisibility=hidden)
 endif()
+
+# https://github.com/mozilla/sccache/issues/242
+if(CMAKE_CXX_COMPILER_LAUNCHER STREQUAL "sccache")
+    string(REGEX REPLACE "/Z[iI7]" "" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Z7")
+endif()
+
+# Check that we are compiling for 64-bit
+if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
+    message(FATAL_ERROR "sizeof(void *) != 8, please compile in 64-bit")
+endif ()
 
 ################################################################################
 
