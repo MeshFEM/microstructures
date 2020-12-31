@@ -120,7 +120,7 @@ void test_quad_meshes(const std::vector<std::string> &meshes, const std::string 
 #endif
 
 // int main(void) {
-TEST_CASE("inflate_and_stitch", "[isosurface_inflation]") {
+TEST_CASE("inflate_and_stitch", "[isosurface_inflation]" MICRO_SLOW_TEST) {
 
     SECTION("pattern_0001") {
         std::string pattern_2d = DATA_DIR "patterns/2D/topologies/0001.obj";

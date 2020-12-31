@@ -73,6 +73,11 @@ if(CMAKE_CXX_COMPILER_LAUNCHER STREQUAL "sccache")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Z7")
 endif()
 
+# Check that we are compiling for 64-bit
+if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
+    message(FATAL_ERROR "sizeof(void *) != 8, please compile in 64-bit")
+endif ()
+
 ################################################################################
 
 # Find out if we are on Ubuntu

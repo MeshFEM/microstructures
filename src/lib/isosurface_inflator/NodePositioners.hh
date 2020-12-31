@@ -404,7 +404,10 @@ struct PrismNodePositioner {
             }
         }
         // Verify that the point is within the expected simplex
-        assert(isZero<TOL>(simplexWeight - 1.0));
+        double val = simplexWeight - 1.0;
+        std::cout << val << std::endl;
+        bool ok = isZero<TOL>(val);
+        assert(ok);
 
         // Z coordinate
         size_t d = numDoFsXY();

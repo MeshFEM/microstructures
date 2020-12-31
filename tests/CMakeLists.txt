@@ -34,6 +34,9 @@ target_link_libraries(unit_tests PUBLIC micro::data)
 # Dump output
 target_compile_definitions(unit_tests PUBLIC -DDUMP_OUTPUT)
 
+# Disable slow tests in debug
+target_compile_definitions(unit_tests PUBLIC MICRO_SLOW_TEST=$<$<CONFIG:Debug>:"[.slow]">)
+
 # Register tests
 include(Catch)
 catch_discover_tests(unit_tests)
