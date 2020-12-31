@@ -45,10 +45,12 @@ if(NOT TARGET tbb::tbb)
     set(TBB_NO_DATE ON CACHE BOOL " " FORCE)
 
     micro_download_tbb()
-    add_subdirectory(${MICRO_EXTERNAL}/tbb tbb EXCLUDE_FROM_ALL)
+    add_subdirectory(${MICRO_EXTERNAL}/tbb tbb)
     set_property(TARGET tbb_static tbb_def_files PROPERTY FOLDER "dependencies")
     if(NOT MSVC)
-        set_target_properties(tbb_static PROPERTIES COMPILE_FLAGS "-Wno-implicit-fallthrough -Wno-missing-field-initializers -Wno-unused-parameter -Wno-keyword-macro")
+        set_target_properties(tbb_static PROPERTIES COMPILE_FLAGS
+            "-Wno-implicit-fallthrough -Wno-missing-field-initializers -Wno-unused-parameter -Wno-keyword-macro"
+        )
     endif()
 
     add_library(tbb_tbb INTERFACE)
@@ -56,7 +58,8 @@ if(NOT TARGET tbb::tbb)
     target_link_libraries(tbb_tbb INTERFACE tbb_static tbbmalloc_static)
     add_library(tbb::tbb ALIAS tbb_tbb)
 
-    micro_target_hide_warnings(tbb_tbb tbb_static tbbmalloc_static)
+    # Doesn't work with Ninja + MSVC on the ASM files
+    # micro_target_hide_warnings(tbb_tbb tbb_static tbbmalloc_static)
 endif()
 
 if(NOT TARGET micro::tbb)

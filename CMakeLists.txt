@@ -2,7 +2,7 @@
 # General Informations
 ################################################################################
 
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.16)
 project(Microstructures)
 
 # CMP0063: Honor visibility properties for all target types.

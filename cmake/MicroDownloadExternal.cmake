@@ -41,7 +41,7 @@ function(micro_download_tbb)
     else()
         micro_download_project(tbb
             GIT_REPOSITORY https://github.com/wjakob/tbb.git
-            GIT_TAG        b066defc0229a1e92d7a200eb3fe0f7e35945d95
+            GIT_TAG        344fa84f34089681732a54f5def93a30a3056ab9
         )
     endif()
 endfunction()
