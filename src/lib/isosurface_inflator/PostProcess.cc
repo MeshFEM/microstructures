@@ -125,7 +125,8 @@ void postProcess(vector<MeshIO::IOVertex>  &vertices,
                     << "WARNING: smartSnap3D failed--probably nonsmooth geometry at cell interface. Resorting to dumbSnap3D."
                     << std::endl;
             std::cerr << "(" << e.what() << ")" << std::endl;
-            dumbSnap3D(vertices, meshCell, opts.facetDistance);
+            // dumbSnap3D(vertices, meshCell, opts.facetDistance);
+            dumbSnap3D(vertices, meshCell, 2 * opts.domainErrorBound);
         }
         BBox<Point3D> snappedBB(vertices);
         if (N == 2) {

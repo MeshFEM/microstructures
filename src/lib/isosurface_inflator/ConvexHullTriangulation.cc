@@ -44,7 +44,7 @@ void convexHullFromTriangulation(const PointCollection &points,
     for (size_t i = 0; 3 * i < indexBuffer.size(); ++i) {
         hullElements[i].resize(3);
         for (size_t lv = 0; lv < 3; ++lv) {
-            hullElements[i][lv] = newVertexId[indexBuffer[i * lv + lv]];
+            hullElements[i][lv] = newVertexId[indexBuffer[i * 3 + lv]];
         }
     }
 }
