@@ -156,7 +156,8 @@ mesh(const SignedDistanceRegion<3> &sdf,
     // Mesh generation
     // std::cout << "Making mesh..." << std::endl;
     BENCHMARK_START_TIMER("make_mesh_3");
-    C3t3 c3t3 = CGAL::make_mesh_3<C3t3>(domain, criteria);
+    C3t3 c3t3 = CGAL::make_mesh_3<C3t3>(domain, criteria, CGAL::parameters::features(domain),
+		    CGAL::parameters::odt(), CGAL::parameters::perturb(0, 20), CGAL::parameters::exude(0, 20));
     // CGAL sometimes returns an empty mesh for some patterns due to
     // insufficient initialization:
     // https://github.com/CGAL/cgal/issues/2416
